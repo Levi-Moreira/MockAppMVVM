@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:color="#FFFFFF"
+        android:tint="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:id="@+id/navigation_top_users"
+        android:icon="@drawable/ic_plus_one_white_24dp"
+        android:title="@string/title_top_users" />
+
+    <item
+        android:color="#FFFFFF"
+        android:tint="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:id="@+id/navigation_my_profile"
+        android:icon="@drawable/ic_dashboard_white_24dp"
+        android:title="@string/title_dashboard" />
+
+</menu>
