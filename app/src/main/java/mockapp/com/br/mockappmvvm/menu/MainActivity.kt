@@ -1,7 +1,6 @@
 package mockapp.com.br.mockappmvvm.menu
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
@@ -9,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main2.*
 import mockapp.com.br.mockappmvvm.R
 import mockapp.com.br.mockappmvvm.profile.ProfileFragment
-import mockapp.com.br.mockappmvvm.users.TopUsersFragment
+import mockapp.com.br.mockappmvvm.users.views.TopUsersFragment
 
 class MainActivity : AppCompatActivity() {
 
