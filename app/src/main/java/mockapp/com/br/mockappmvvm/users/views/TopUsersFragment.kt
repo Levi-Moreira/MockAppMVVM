@@ -3,9 +3,9 @@ package mockapp.com.br.mockappmvvm.users.views
 
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -14,13 +14,16 @@ import android.widget.Toast
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_top_users.*
 import mockapp.com.br.mockappmvvm.R
-import mockapp.com.br.mockappmvvm.application.data.entities.User
 import mockapp.com.br.mockappmvvm.users.adapters.UsersAdapter
-import mockapp.com.br.mockappmvvm.users.data.DataLoadState
+import mockapp.com.br.mockappmvvm.users.data.Status
 import mockapp.com.br.mockappmvvm.users.viewmodels.TopUsersViewModel
+import javax.inject.Inject
 
 class TopUsersFragment : DaggerFragment(), LifecycleOwner {
 
+
+    @Inject
+    lateinit var usersViewModelFactory: ViewModelProvider.Factory
 
     lateinit var viewModel: TopUsersViewModel
 
@@ -29,7 +32,7 @@ class TopUsersFragment : DaggerFragment(), LifecycleOwner {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        viewModel = ViewModelProviders.of(this).get(TopUsersViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, usersViewModelFactory).get(TopUsersViewModel::class.java)
 
         // Inflate the layout for this fragment
 
@@ -49,11 +52,14 @@ class TopUsersFragment : DaggerFragment(), LifecycleOwner {
         topUsersRecyclerView.adapter = adapter
 
         viewModel.dataLoadStatus().observe(this, Observer {
-            when (it) {
-                DataLoadState.LOADING -> swipeRefresh.isRefreshing = true
-                DataLoadState.FAILED -> swipeRefresh.isRefreshing = false
-                DataLoadState.LOADED -> swipeRefresh.isRefreshing = false
+            it?.let {
+                when (it.status) {
+                    Status.RUNNING -> swipeRefresh.isRefreshing = true
+                    Status.FAILED -> swipeRefresh.isRefreshing = false
+                    Status.SUCCESS -> swipeRefresh.isRefreshing = false
+                }
             }
+
         })
     }
 

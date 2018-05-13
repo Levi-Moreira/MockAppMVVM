@@ -8,18 +8,12 @@ import io.reactivex.BackpressureStrategy
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import mockapp.com.br.mockappmvvm.application.data.entities.User
-import mockapp.com.br.mockappmvvm.users.data.DataLoadState
-import mockapp.com.br.mockappmvvm.users.data.UsersRepositoryImpl
+import mockapp.com.br.mockappmvvm.users.data.NetworkState
+import mockapp.com.br.mockappmvvm.users.data.UsersRepository
+import javax.inject.Inject
 
 
-class TopUsersViewModel : ViewModel() {
-
-
-    var usersRepository: UsersRepositoryImpl = UsersRepositoryImpl()
-
-    lateinit var usersLiveData: LiveData<PagedList<User>>
-
-
+class TopUsersViewModel @Inject constructor(val usersRepository: UsersRepository) : ViewModel() {
     fun getUserList(): LiveData<PagedList<User>> {
         val result = usersRepository
                 .getUsers()
@@ -28,13 +22,12 @@ class TopUsersViewModel : ViewModel() {
                 .toFlowable(BackpressureStrategy.BUFFER)
 
 
-        usersLiveData = LiveDataReactiveStreams.fromPublisher(result)
+        return LiveDataReactiveStreams.fromPublisher(result)
 
-        return usersLiveData
 
     }
 
-    fun dataLoadStatus(): LiveData<DataLoadState> {
+    fun dataLoadStatus(): LiveData<NetworkState> {
         return usersRepository.getDataLoadStatus()
     }
 
