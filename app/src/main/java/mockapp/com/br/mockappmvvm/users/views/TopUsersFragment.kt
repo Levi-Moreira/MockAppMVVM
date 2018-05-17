@@ -1,16 +1,15 @@
 package mockapp.com.br.mockappmvvm.users.views
 
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_top_users.*
 import mockapp.com.br.mockappmvvm.R
@@ -42,7 +41,7 @@ class TopUsersFragment : DaggerFragment(), LifecycleOwner {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        topUsersRecyclerView.layoutManager = LinearLayoutManager(context)
+        topUsersRecyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         adapter = UsersAdapter()
 
         adapter.clickListener = { user ->

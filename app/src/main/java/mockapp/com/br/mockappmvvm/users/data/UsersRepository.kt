@@ -1,14 +1,15 @@
 package mockapp.com.br.mockappmvvm.users.data
 
-import android.arch.paging.PagedList
-import android.arch.paging.RxPagedListBuilder
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations.switchMap
+import androidx.paging.PagedList
+import androidx.paging.RxPagedListBuilder
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import mockapp.com.br.mockappmvvm.application.data.entities.User
 import mockapp.com.br.mockappmvvm.users.data.UsersDataSource.Companion.SO_PAGE_SIZE
-import android.arch.lifecycle.Transformations.switchMap
-import android.arch.lifecycle.LiveData
 import javax.inject.Inject
 
 
@@ -21,7 +22,7 @@ class UsersRepository @Inject constructor(var dataSourceFactory: UsersDataSource
                 .setPageSize(SO_PAGE_SIZE)
                 .build()
 
-        val users = RxPagedListBuilder(dataSourceFactory, config)
+        val users: Observable<PagedList<User>> = RxPagedListBuilder(dataSourceFactory, config)
                 .setInitialLoadKey(1)
                 .setFetchScheduler(Schedulers.io())
                 .setNotifyScheduler(AndroidSchedulers.mainThread())

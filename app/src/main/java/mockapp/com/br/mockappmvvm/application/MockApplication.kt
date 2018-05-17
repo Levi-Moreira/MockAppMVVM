@@ -1,8 +1,7 @@
 package mockapp.com.br.mockappmvvm.application
 
-import android.app.Application
 import android.app.Activity
-import android.support.v4.app.Fragment
+import android.app.Application
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -20,7 +19,7 @@ class MockApplication : Application(), HasSupportFragmentInjector {
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     @Inject
-    lateinit var supportFragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var supportFragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     fun initDagger() {
         DaggerApplicationComponent
@@ -34,7 +33,7 @@ class MockApplication : Application(), HasSupportFragmentInjector {
         return activityDispatchingAndroidInjector
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
         return supportFragmentDispatchingAndroidInjector
     }
 }

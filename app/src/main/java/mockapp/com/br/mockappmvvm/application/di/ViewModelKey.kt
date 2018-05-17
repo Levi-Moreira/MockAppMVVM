@@ -1,6 +1,6 @@
 package mockapp.com.br.mockappmvvm.application.di
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import dagger.MapKey
 import kotlin.reflect.KClass
 

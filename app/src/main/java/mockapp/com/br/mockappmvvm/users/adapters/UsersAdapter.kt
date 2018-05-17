@@ -1,10 +1,8 @@
 package mockapp.com.br.mockappmvvm.users.adapters
 
-import android.arch.paging.PagedListAdapter
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import kotlinx.android.synthetic.main.user_list_item.view.*
 import mockapp.com.br.mockappmvvm.R
 import mockapp.com.br.mockappmvvm.application.data.entities.User
@@ -26,7 +24,7 @@ class UsersAdapter : PagedListAdapter<User, UsersAdapter.UsersViewHolder>(UsersD
         }
     }
 
-    inner class UsersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class UsersViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         fun bind(item: User, listener: (User) -> Unit) = with(itemView) {
             displayName.text = item.displayName
             userId.text = item.userId.toString()

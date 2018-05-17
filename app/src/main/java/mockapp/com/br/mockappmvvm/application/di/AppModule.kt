@@ -1,11 +1,10 @@
 package mockapp.com.br.mockappmvvm.application.di
 
-import javax.inject.Singleton
-
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
 import mockapp.com.br.mockappmvvm.application.data.remote.StackOverflowConfig
+import javax.inject.Singleton
 
 @Module
 class AppModule {

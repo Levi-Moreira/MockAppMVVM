@@ -1,6 +1,6 @@
 package mockapp.com.br.mockappmvvm.application.di
 
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 

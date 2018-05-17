@@ -1,7 +1,7 @@
 package mockapp.com.br.mockappmvvm.users.data
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.paging.PageKeyedDataSource
+import androidx.lifecycle.MutableLiveData
+import androidx.paging.PageKeyedDataSource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import mockapp.com.br.mockappmvvm.application.data.entities.User
