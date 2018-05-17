@@ -39,8 +39,8 @@ dependencies {
     // ViewModel, LiveData and LifeCycle
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     implementation "android.arch.lifecycle:runtime:$lifecycle_version"
-    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
     implementation "android.arch.lifecycle:reactivestreams:$lifecycle_version"
+    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
     testImplementation "android.arch.core:core-testing:$lifecycle_version"
 
     //work manager
@@ -50,8 +50,8 @@ dependencies {
 
     //paging
     implementation "android.arch.paging:runtime:$paging_version"
+    implementation 'android.arch.paging:rxjava2:1.0.0-rc1'
     testImplementation "android.arch.paging:common:$paging_version"
-    implementation 'android.arch.paging:rxjava2:1.0.0-alpha1'
 
     //room
     implementation "android.arch.persistence.room:runtime:$room_version"
