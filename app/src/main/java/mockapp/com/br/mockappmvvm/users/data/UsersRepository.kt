@@ -1,8 +1,6 @@
 package mockapp.com.br.mockappmvvm.users.data
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations.switchMap
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
 import io.reactivex.Observable
@@ -32,8 +30,9 @@ class UsersRepository @Inject constructor(var dataSourceFactory: UsersDataSource
 
     }
 
-    fun getDataLoadStatus(): LiveData<NetworkState> {
-        return switchMap(dataSourceFactory.dataSourceLiveData
-        ) { dataSource -> dataSource.loadState }
+    fun getDataLoadStatus(): Observable<NetworkState> {
+        return dataSourceFactory.observableEmitter.switchMap { dataSource ->
+            dataSource.loadState
+        }
     }
 }

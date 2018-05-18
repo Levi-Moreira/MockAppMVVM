@@ -12,6 +12,5 @@ class AppModule {
     @Singleton
     fun providesBackend(): StackOverflowConfig = StackOverflowConfig()
 
-    fun provideCompositeSubscription(): CompositeDisposable = CompositeDisposable()
 
 }

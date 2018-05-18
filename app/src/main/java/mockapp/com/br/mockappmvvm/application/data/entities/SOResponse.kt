@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 class SOResponse<T> {
 
     var items: List<T> = mutableListOf()
+    @SerializedName("has_more")
     var hasMore: Boolean = false
     @SerializedName("quota_max")
     var quotaMax: Int = 0

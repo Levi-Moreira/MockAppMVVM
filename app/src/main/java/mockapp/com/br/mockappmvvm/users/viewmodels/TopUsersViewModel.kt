@@ -24,11 +24,16 @@ class TopUsersViewModel @Inject constructor(val usersRepository: UsersRepository
 
         return LiveDataReactiveStreams.fromPublisher(result)
 
-
     }
 
     fun dataLoadStatus(): LiveData<NetworkState> {
-        return usersRepository.getDataLoadStatus()
+        val result = usersRepository.getDataLoadStatus()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .toFlowable(BackpressureStrategy.BUFFER)
+
+        return LiveDataReactiveStreams.fromPublisher(result)
+
     }
 
 }
