@@ -2,7 +2,6 @@ package mockapp.com.br.mockappmvvm.menu
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main2.*
 import mockapp.com.br.mockappmvvm.R
 import mockapp.com.br.mockappmvvm.profile.ProfileFragment
@@ -33,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         replaceTopUserFragment()
     }
+
 
     private fun replaceTopUserFragment() {
 

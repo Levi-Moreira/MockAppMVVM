@@ -66,13 +66,19 @@ class TopUsersFragment : DaggerFragment(), LifecycleOwner {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.getUserList().observe(this, Observer { result ->
-            result?.let {
-                adapter.submitList(it)
+//        viewModel.getUserList().observe(this, Observer { result ->
+//            result?.let {
+//                adapter.submitList(it)
+//            }
+//
+//        })
+
+        viewModel.getUserListNotPaged(1, 20).observe(this, Observer {
+            it?.let {
+                Toast.makeText(this.context, "Here", Toast.LENGTH_SHORT).show()
+
             }
-
         })
-
 
     }
 
